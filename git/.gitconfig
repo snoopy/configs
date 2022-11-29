@@ -1,0 +1,148 @@
+# global ignores go in ~/.config/git/ignore
+
+[core]
+autocrlf = false
+# ignore file mode changes (set locally)
+# git config core.filemode false
+
+# [core]
+# pager = delta
+# [include]
+# path = themes.gitconfig
+# [interactive]
+# diffFilter = delta --color-only
+# [delta]
+# features = chameleon
+
+[push]
+# only push when the current branch is tracking origin branch of same name
+default = simple
+
+[merge]
+conflictstyle = diff3
+
+[diff]
+colorMoved = default
+algorithm = histogram
+
+[alias]
+git = !git
+
+s = status
+
+cl = clone
+cla = clone --recursive
+
+co = checkout
+col = checkout -
+
+a = add
+aa = add -A
+ai = add --interactive
+ap = add -p
+
+ros = restore --staged
+ro = restore
+roa = restore :/
+
+del = clean -dfx
+
+rh = reset --hard
+drop = reset --hard HEAD~1
+
+# check commits
+cc = cherry -v
+
+cp = cherry-pick
+
+# cf = commit --no-verify
+# c = commit
+# ca = commit --amend
+# can = commit --amend --no-edit
+# cm = commit -m
+# caa = commit -a --amend -C HEAD
+
+c = "!git commit --date="$(date --utc +%Y-%m-%dT%H:%M:%S%z)""
+ca = !git c --amend
+cm = !git c -m
+can = !git c --amend --no-edit
+caa = !git c -a --amend -C HEAD
+
+p = push
+pf = push -f
+pn = push --set-upstream origin HEAD
+pt = push --tags
+
+fa = fetch --all --tags --prune
+
+ff = pull --ff-only
+ffu = pull --ff-only upstream HEAD
+ffm = merge --ff-only
+
+b = branch -vv
+br = branch -r
+ba = branch -avvv
+buu = branch --unset-upstream
+bsu = branch --set-upstream-to
+bm = branch -m
+bd = branch -D
+bdr = push origin --delete
+bc = switch -c
+be = branch --merged
+
+rbi = rebase -i
+rbc = rebase --continue
+rbs = rebase --skip
+rba = rebase --abort
+
+rev = remote -v
+rea = remote add
+rer = remote rm
+reu = remote set-url
+reua = remote set-url --add --push #<remote> <url>
+
+sma = submodule add
+smu = submodule update --remote --merge
+
+cfu = config user.name
+cfm = config user.email
+
+w = show
+
+adog = log --all --decorate --oneline --graph
+customlog = log --pretty=format:"%C(yellow)%h\\ %ad\\ %C(cyan)%<(10,trunc)%an\\ %C(reset)%s\\ %C(auto)%d" --decorate
+l = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
+ll = log --pretty=format:"%C(yellow)%H\\ %ad\\ %C(cyan)%<(10,trunc)%an\\ %<(10,trunc)%cn\\ %C(reset)%s\\ %C(auto)%d" --date=rfc --name-status
+ld = !git customlog --date=rfc -p
+ls = log -1 --name-status
+lr = reflog
+# show commits by message
+lm = !git l --grep
+# show commits  by author
+la = !git l --author
+# show who committed
+lw = shortlog -n -e -s
+
+count = git rev-list --count
+
+t = tag
+td = describe --tags
+
+fn = "!git ls-files | grep -i"
+fc = grep -Ii --break
+
+modch = !sh -c 'git log --summary --pretty=oneline|grep \"mode change\" -B 1|less'
+
+d = diff
+dc = diff --cached
+dw = diff --color-words=.
+dl = diff --cached HEAD^
+# show merge conflicts
+dmc = diff --name-only --diff-filter=U
+
+sl = stash list
+ss = stash push
+sp = stash pop
+sa = stash apply
+sd = stash drop
+sc = stash clear
