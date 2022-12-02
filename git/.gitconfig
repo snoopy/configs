@@ -117,9 +117,9 @@ ld = !git customlog --date=rfc -p
 ls = log -1 --name-status
 lr = reflog
 # show commits by message
-lm = !git l --grep
+lm = !git l -i --grep
 # show commits  by author
-la = !git l --author
+la = !git l -i --author
 # show who committed
 lw = shortlog -n -e -s
 
