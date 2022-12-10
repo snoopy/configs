@@ -123,7 +123,7 @@ la = !git l -i --author
 # show who committed
 lw = shortlog -n -e -s
 
-count = git rev-list --count
+count = rev-list --count
 
 t = tag
 td = describe --tags
