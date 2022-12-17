@@ -129,7 +129,7 @@ t = tag
 td = describe --tags
 
 fn = "!git ls-files | grep -i"
-fc = grep -Ii --break
+fc = grep -n -Ii --break
 
 modch = !sh -c 'git log --summary --pretty=oneline|grep \"mode change\" -B 1|less'
 
