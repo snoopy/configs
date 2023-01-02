@@ -110,7 +110,7 @@ cfm = config user.email
 w = show
 
 adog = log --all --decorate --oneline --graph
-customlog = log --pretty=format:"%C(yellow)%h\\ %ad\\ %C(cyan)%<(10,trunc)%an\\ %C(reset)%s\\ %C(auto)%d" --decorate
+customlog = log --pretty=format:"%C(yellow)%H\\ %ad\\ %C(cyan)%<(10,trunc)%an\\ %C(reset)%s\\ %C(auto)%d" --decorate
 l = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
 ll = log --pretty=format:"%C(yellow)%H\\ %ad\\ %C(cyan)%<(10,trunc)%an\\ %<(10,trunc)%cn\\ %C(reset)%s\\ %C(auto)%d" --date=rfc --name-status
 ld = !git customlog --date=rfc -p
