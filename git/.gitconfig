@@ -103,6 +103,7 @@ reua = remote set-url --add --push #<remote> <url>
 
 sma = submodule add
 smu = submodule update --remote --merge
+smi = submodule update --init
 
 cfu = config user.name
 cfm = config user.email
