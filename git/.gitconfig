@@ -113,10 +113,10 @@ w = show
 adog = log --all --decorate --oneline --graph
 customlog = log --pretty=format:"%C(yellow)%H\\ %ad\\ %C(cyan)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d"
 l = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --no-merges
-ll = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
+lv = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
 lf = !git customlog --date=rfc --name-status --no-merges
 ld = !git customlog --date=rfc -p --no-merges
-ls = log -1 --name-status
+ll = log -1 --name-status
 lr = reflog
 # show commits by message
 lm = !git l -i --grep
