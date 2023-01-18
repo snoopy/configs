@@ -138,7 +138,7 @@ modch = !sh -c 'git log --summary --pretty=oneline|grep \"mode change\" -B 1|les
 d = diff
 dc = diff --cached
 dw = diff --color-words=.
-dl = diff --cached HEAD^
+dl = log -1 -p --no-merges
 # show merge conflicts
 dmc = diff --name-only --diff-filter=U
 
