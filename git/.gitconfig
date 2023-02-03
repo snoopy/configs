@@ -53,16 +53,9 @@ drop = reset --hard HEAD~1
 # check commits
 cc = cherry -v
 
-cp = cherry-pick
+cp = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git cherry-pick"
 
-# cf = commit --no-verify
-# c = commit
-# ca = commit --amend
-# can = commit --amend --no-edit
-# cm = commit -m
-# caa = commit -a --amend -C HEAD
-
-c = "!git commit --date="$(date --utc +%Y-%m-%dT%H:%M:%S%z)""
+c = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git commit --date=$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
 ca = !git c --amend
 cm = !git c -m
 can = !git c --amend --no-edit
@@ -75,9 +68,10 @@ pt = push --tags
 
 fa = fetch --all --tags --prune
 
+m = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git merge"
 ff = pull --ff-only
 ffu = pull --ff-only upstream HEAD
-ffm = merge --ff-only
+ffm = !git m --ff-only
 
 b = branch -vv
 br = branch -r
@@ -90,7 +84,7 @@ bdr = push origin --delete
 bc = switch -c
 be = branch --merged
 
-rbi = rebase -i
+rbi = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git rebase -i"
 rbc = rebase --continue
 rbs = rebase --skip
 rba = rebase --abort
