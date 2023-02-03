@@ -118,6 +118,7 @@ lm = !git l -i --grep
 la = !git l -i --author
 # show who committed
 lw = shortlog -e -s
+le = log --pretty=fuller
 
 count = rev-list --count
 
