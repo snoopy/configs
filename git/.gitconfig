@@ -49,6 +49,7 @@ del = clean -dfx
 
 rh = reset --hard
 drop = reset --hard HEAD~1
+pop = reset HEAD~1
 
 # check commits
 cc = cherry -v
