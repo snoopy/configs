@@ -1,6 +1,7 @@
 # global ignores go in ~/.config/git/ignore
 
 [core]
+excludesFile = ~/.gitignore
 autocrlf = false
 # ignore file mode changes (set locally)
 # git config core.filemode false
