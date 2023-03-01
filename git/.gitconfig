@@ -56,6 +56,8 @@ pop = reset HEAD~1
 cc = cherry -v
 
 cp = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git cherry-pick"
+cpc = !git cp --continue
+cpa = !git cp --abort
 
 c = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git commit --date=$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
 ca = !git c --amend
