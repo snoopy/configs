@@ -1,5 +1,3 @@
-# global ignores go in ~/.config/git/ignore
-
 [core]
 excludesFile = ~/.gitignore
 autocrlf = false
