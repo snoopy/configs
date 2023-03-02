@@ -1,5 +1,5 @@
 [core]
-excludesFile = ~/.gitignore
+excludesFile = ~/.gitglobalignore
 autocrlf = false
 # ignore file mode changes (set locally)
 # git config core.filemode false
