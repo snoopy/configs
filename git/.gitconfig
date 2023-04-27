@@ -107,8 +107,8 @@ w = show
 
 adog = log --all --decorate --oneline --graph
 customlog = log --pretty=format:"%C(yellow)%H\\ %ad\\ %C(cyan)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d"
-l = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --no-merges
-lv = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
+ln = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --no-merges
+l = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
 lf = !git customlog --date=rfc --name-status --no-merges
 ld = !git customlog --date=rfc -p --no-merges
 ll = log -1 --name-status
