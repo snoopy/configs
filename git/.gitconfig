@@ -39,13 +39,11 @@ aa = add -A
 ai = add --interactive
 ap = add -p
 
-ros = restore --staged
-ro = restore
-roa = restore :/
-
 del = clean -dfx
 
+rs = restore --staged
 rh = reset --hard
+rk = reset --hard HEAD
 drop = reset --hard HEAD~1
 pop = reset HEAD~1
 
