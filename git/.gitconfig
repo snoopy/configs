@@ -113,8 +113,10 @@ ll = log -1 --name-status
 lr = reflog
 # show commits by message
 lm = !git l -i --grep
-# show commits  by author
+# show commits by author
 la = !git l -i --author
+# show commits where diff matches regex (shows moves unlike -S)
+lg = !git l -G
 # show who committed
 lw = shortlog -e -s
 le = log --pretty=fuller
