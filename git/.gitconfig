@@ -109,7 +109,7 @@ ln = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --no-merges
 l = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
 lf = !git customlog --date=rfc --name-status --no-merges
 ld = !git customlog --date=rfc -p --no-merges
-ll = log -1 --name-status
+ll = log -1 --name-status --pretty=fuller
 lr = reflog
 # show commits by message
 lm = !git l -i --grep
