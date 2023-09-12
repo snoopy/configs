@@ -108,6 +108,12 @@ customlog = log --pretty=format:"%C(yellow)%H\\ %C(auto)%ad\\ %C(blue)%<(15,trun
 ln = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --no-merges
 l = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
 lf = !git l --name-status --no-merges
+lfr = log --name-status --diff-filter=R --follow
+lfa = log --name-status --diff-filter=A --follow
+lfd = log --name-status --diff-filter=D --follow
+lfra = !git l --name-status --diff-filter=R
+lfaa = !git l --name-status --diff-filter=A
+lfda = !git l --name-status --diff-filter=D
 ld = !git l -p --no-merges
 ll = log -1 --name-status --pretty=fuller
 lr = reflog
