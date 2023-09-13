@@ -87,6 +87,7 @@ rbi = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git rebase -i"
 rbc = rebase --continue
 rbs = rebase --skip
 rba = rebase --abort
+rbn = "!f() { git rbi HEAD~$1; }; f"
 
 rev = remote -v
 rea = remote add
