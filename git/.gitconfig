@@ -65,7 +65,7 @@ pf = push -f
 pn = push --set-upstream origin HEAD
 pt = push --tags
 
-fa = fetch --all --tags --prune
+fa = "!f() { git fetch --all --tags --prune && git status; }; f"
 
 m = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git merge"
 ff = pull --ff-only
