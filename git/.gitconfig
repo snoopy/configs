@@ -89,11 +89,11 @@ rbs = rebase --skip
 rba = rebase --abort
 rbn = "!f() { git rbi HEAD~$1; }; f"
 
-rev = remote -v
-rea = remote add
-rer = remote rm
-reu = remote set-url
-reua = remote set-url --add --push #<remote> <url>
+rmtv = remote -v
+rmta = remote add
+rmtr = remote rm
+rmtu = remote set-url
+rmtap = remote set-url --add --push #<remote> <url>
 
 sma = submodule add
 smu = submodule update --remote --merge
