@@ -127,6 +127,13 @@ lg = !git l -G
 # show who committed
 lw = shortlog -e -s
 le = log --pretty=fuller
+le = log --pretty=fuller
+li = !git l ..@{upstream}
+lip = !git l -p ..@{upstream}
+lif = !git l --name-status ..@{upstream}
+lo = !git l @{upstream}..
+lop = !git l -p @{upstream}..
+lof = !git l --name-status @{upstream}..
 
 count = rev-list --count
 
