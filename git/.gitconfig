@@ -74,7 +74,6 @@ ffm = !git m --ff-only
 
 b = branch -vv
 br = branch -r
-ba = branch -avvv
 buu = branch --unset-upstream
 bsu = branch --set-upstream-to
 bm = branch -m
