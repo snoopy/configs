@@ -81,6 +81,7 @@ bd = branch -D
 bdr = push origin --delete
 bc = switch -c
 be = branch --merged
+bf = branch --contains
 
 rbi = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git rebase -i"
 rbc = rebase --continue
