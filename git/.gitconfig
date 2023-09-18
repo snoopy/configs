@@ -72,8 +72,8 @@ ff = pull --ff-only
 ffu = pull --ff-only upstream HEAD
 ffm = !git m --ff-only
 
-b = branch -vv
-br = branch -r
+b = branch --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(if)%(HEAD)%(then)%(color:green)%(HEAD)%(end)%(refname:short)%(if)%(upstream)%(then)\\ %(color:blue)[%(upstream:short)]%(color:red)%(upstream:track)%(end)"
+br = !git b -r
 buu = branch --unset-upstream
 bsu = branch --set-upstream-to
 bm = branch -m
