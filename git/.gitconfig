@@ -117,7 +117,7 @@ lfaa = !git l --name-status --diff-filter=A
 lfda = !git l --name-status --diff-filter=D
 ld = !git l -p --no-merges
 ll = log -1 --name-status --pretty=fuller
-lr = reflog
+lr = log -g --pretty=oneline
 # show commits by message
 lm = !git l -i --grep
 # show commits by author
