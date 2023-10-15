@@ -47,18 +47,16 @@ rk = reset --hard HEAD
 drop = reset --hard HEAD~1
 pop = reset HEAD~1
 
-# check commits
-cc = cherry -v
-
 cp = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git cherry-pick"
 cpc = !git cp --continue
 cpa = !git cp --abort
 
 c = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git commit --date=$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
-ca = !git c --amend
+cr = !git c --amend
 cm = !git c -m
-can = !git c --amend --no-edit
-caa = !git c -a --amend -C HEAD
+cn = !git c --amend --no-edit
+cc = !git c -a --amend -C HEAD
+ca = !git c -a
 
 p = push
 pf = push -f
@@ -135,6 +133,7 @@ lif = !git l --name-status ..@{upstream}
 lo = !git l @{upstream}..
 lop = !git l -p @{upstream}..
 lof = !git l --name-status @{upstream}..
+lch = cherry -v
 
 count = rev-list --count
 
