@@ -65,7 +65,8 @@ pf = push -f
 pn = push --set-upstream origin HEAD
 pt = push --tags
 
-fa = "!f() { git fetch --all --tags --prune && git status; }; f"
+fa = "!f() { git fetch --all --no-tags --prune && git status; }; f"
+fat = "!f() { git fetch --all --tags --prune && git status; }; f"
 
 m = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git merge"
 ff = pull --ff-only
@@ -137,8 +138,10 @@ lof = !git l --name-status @{upstream}..
 
 count = rev-list --count
 
-t = tag --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(refname:short)"
-td = describe --tags
+t = tag -l --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(refname:short)"
+ti = describe --tags
+td = tag -d
+tda = "!f() { git tag -d $(git tag -l); }; f"
 
 fn = "!git ls-files | grep -i"
 fc = grep -n -Ii --break
