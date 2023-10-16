@@ -133,6 +133,7 @@ lo = !git l @{upstream}..
 lod = !git l -p @{upstream}..
 lof = !git l --name-status @{upstream}..
 lch = cherry -v
+lchmod = !sh -c 'git l --summary | grep \"mode change\" -B 1|less'
 
 count = rev-list --count
 
@@ -145,8 +146,6 @@ tp = push --tags
 
 fn = "!git ls-files | grep -i"
 fc = grep -n -Ii --break
-
-modch = !sh -c 'git log --summary --pretty=oneline|grep \"mode change\" -B 1|less'
 
 d = diff
 dc = diff --cached
