@@ -61,7 +61,6 @@ ca = !git c -a
 p = push
 pf = push -f
 pn = push --set-upstream origin HEAD
-pt = push --tags
 
 fa = "!f() { git fetch --all --no-tags --prune && git status; }; f"
 fat = "!f() { git fetch --all --tags --prune && git status; }; f"
@@ -141,6 +140,8 @@ t = tag -l --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(colo
 ti = describe --tags
 td = tag -d
 tda = "!f() { git tag -d $(git tag -l); }; f"
+tdr = push origin --delete
+tp = push --tags
 
 fn = "!git ls-files | grep -i"
 fc = grep -n -Ii --break
