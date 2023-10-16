@@ -127,10 +127,10 @@ lw = shortlog -e -s
 le = log --pretty=fuller
 le = log --pretty=fuller
 li = !git l ..@{upstream}
-lip = !git l -p ..@{upstream}
+lid = !git l -p ..@{upstream}
 lif = !git l --name-status ..@{upstream}
 lo = !git l @{upstream}..
-lop = !git l -p @{upstream}..
+lod = !git l -p @{upstream}..
 lof = !git l --name-status @{upstream}..
 lch = cherry -v
 
