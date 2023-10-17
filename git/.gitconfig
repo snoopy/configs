@@ -152,7 +152,7 @@ dc = diff --cached
 dw = diff --color-words=.
 dl = log -1 -p --no-merges
 # show merge conflicts
-dmc = diff --name-only --diff-filter=U
+dmc = diff --check
 
 sl = stash list
 ss = stash push
