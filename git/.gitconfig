@@ -27,6 +27,7 @@ algorithm = histogram
 git = !git
 
 s = status --short --branch
+si = status --short --branch --ignored
 
 cloner = clone --recurse-submodules
 
