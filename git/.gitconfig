@@ -123,6 +123,7 @@ lm = !git l -i --grep
 la = !git l -i --author
 # show commits where diff matches regex (shows moves unlike -S)
 lg = !git l -G
+ls = !git l -S
 # show who committed
 lw = shortlog -e -s
 le = log --pretty=fuller
