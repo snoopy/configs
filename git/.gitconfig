@@ -147,7 +147,8 @@ tdr = push origin --delete
 tp = push --tags
 
 fn = "!git ls-files | grep -i"
-fc = grep -n -Ii --break
+fc = grep -n -Ii --heading --break
+fcw = grep -n -Ii -w --heading --break
 
 d = diff
 dc = diff --cached
