@@ -68,7 +68,7 @@ fa = "!f() { git fetch --all --no-tags --prune && git s; }; f"
 fat = "!f() { git fetch --all --tags --prune && git s; }; f"
 
 m = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git merge"
-ff = pull --ff-only
+ff = pull --ff-only --no-tags
 ffu = pull --ff-only upstream HEAD
 ffm = !git m --ff-only
 
