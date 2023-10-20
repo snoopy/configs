@@ -57,6 +57,7 @@ cm = !git c -m
 cn = !git c --amend --no-edit
 cc = !git c -a --amend -C HEAD
 ca = !git c -a
+cam = !git c -a -m
 cinit = !git c --allow-empty --message 'init'
 
 p = push
