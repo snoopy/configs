@@ -1,3 +1,6 @@
+window:
+  startup_mode: Maximized
+
 font:
   size: 14.0
 
