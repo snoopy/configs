@@ -105,7 +105,7 @@ cfgm = config user.email
 w = show
 
 adog = log --all --decorate --oneline --graph
-customlog = log --pretty=format:"%C(yellow)%H\\ %C(auto)%ad\\ %C(magenta)%<(10,trunc)%ar\\ %C(blue)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d"
+customlog = log --topo-order --pretty=format:"%C(yellow)%H\\ %C(auto)%ad\\ %C(magenta)%<(10,trunc)%ar\\ %C(blue)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d"
 ln = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --no-merges
 l = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
 lf = !git l --name-status --no-merges
