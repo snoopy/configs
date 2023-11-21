@@ -36,6 +36,7 @@ col = checkout -
 
 a = add
 aa = add -A
+ae = add -e
 ai = add --interactive
 ap = add -p
 
