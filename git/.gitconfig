@@ -4,13 +4,20 @@ autocrlf = false
 # ignore file mode changes (set locally)
 # git config core.filemode false
 
-# use diff-highlight usually located at /usr/share/doc/git/contrib/diff-highlight/
-[pager]
-log = diff-highlight | less
-show = diff-highlight | less
-diff = diff-highlight | less
+# https://github.com/dandavison/delta/releases
+[core]
+pager = delta
 [interactive]
-diffFilter = diff-highlight
+diffFilter = delta --color-only
+[delta]
+syntax-theme = none
+line-numbers = true
+navigate = true
+word-diff-regex = .
+plus-style = '"#008700" normal'
+plus-emph-style = '"#121212" "#008700"'
+minus-style = '"#E7595A" normal'
+minus-emph-style = '"#121212" "#E7595A"'
 
 [push]
 # only push when the current branch is tracking origin branch of same name
