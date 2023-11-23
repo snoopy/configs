@@ -63,7 +63,7 @@ c = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git commit --date=$(
 cr = !git c --amend
 cm = !git c -m
 cs = !git c --amend --no-edit
-cc = !git c -a --amend -C HEAD
+csa = !git c -a --amend -C HEAD
 ca = !git c -a
 cam = !git c -a -m
 cinit = !git c --allow-empty --message 'init'
