@@ -52,6 +52,7 @@ ap = add -p
 del = clean -dfx
 
 rs = restore --staged
+rw = restore --worktree --patch
 rh = reset --hard
 rk = reset --hard HEAD
 drop = reset --hard HEAD~1
