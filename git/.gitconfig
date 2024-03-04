@@ -49,7 +49,9 @@ ae = add -e
 ai = add --interactive
 ap = add -p
 
-del = clean -dfx
+scrub = clean -df
+# -x also removes files that are ignored
+purge = clean -dfx
 
 rs = restore --staged
 rw = restore --worktree --patch
