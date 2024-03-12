@@ -44,10 +44,10 @@ co = checkout
 col = checkout -
 
 a = add
-aa = add -A
-ae = add -e
+aa = add --all
+ae = add --edit
 ai = add --interactive
-ap = add -p
+ap = add --patch
 
 scrub = clean -df
 # -x also removes files that are ignored
@@ -66,15 +66,15 @@ cpa = !git cp --abort
 
 c = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git commit --date=$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
 cr = !git c --amend
-cm = !git c -m
+cm = !git c --message
 cs = !git c --amend --no-edit
-csa = !git c -a --amend -C HEAD
-ca = !git c -a
-cam = !git c -a -m
+csa = !git c --all --amend -C HEAD
+ca = !git c --all
+cam = !git c --all --message
 cinit = !git c --allow-empty --message 'init'
 
 p = push
-pf = push -f
+pf = push --force
 pn = push --set-upstream origin HEAD
 
 fa = "!f() { git fetch --all --no-tags --prune && git s; }; f"
@@ -86,13 +86,13 @@ ffu = pull --ff-only upstream HEAD
 ffm = !git m --ff-only
 
 b = branch --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(if)%(HEAD)%(then)%(color:green)%(HEAD)%(end)%(refname:short)%(if)%(upstream)%(then)\\ %(color:blue)[%(upstream:short)]%(color:red)%(upstream:track)%(end)"
-br = !git b -r
+br = !git b --remotes
 buu = branch --unset-upstream
 bsu = branch --set-upstream-to
-bm = branch -m
-bd = branch -D
+bm = branch --move
+bd = branch --delete --force
 bdr = push origin --delete
-bc = switch -c
+bc = switch --create
 be = branch --merged
 bf = branch --contains
 
@@ -102,7 +102,7 @@ rbs = rebase --skip
 rba = rebase --abort
 rbn = "!f() { git rbi HEAD~$1; }; f"
 
-rmtv = remote -v
+rmtv = remote --verbose
 rmta = remote add
 rmtr = remote rm
 rmtu = remote set-url
@@ -128,47 +128,46 @@ lfd = log --name-status --diff-filter=D --follow
 lfra = !git l --name-status --diff-filter=R
 lfaa = !git l --name-status --diff-filter=A
 lfda = !git l --name-status --diff-filter=D
-ld = !git l -p --no-merges
+ld = !git l --patch --no-merges
 ll = log -1 --name-status --pretty=fuller
-lr = log -g --pretty=oneline
+lr = log --walk-reflogs --pretty=oneline
 # show commits by message
-lm = !git l -i --grep
+lm = !git l --regexp-ignore-case --grep
 # show commits by author
-la = !git l -i --author
+la = !git l --regexp-ignore-case --author
 # show commits where diff matches regex (shows moves unlike -S)
 lg = !git l -G
 ls = !git l -S
 # show who committed
-lw = shortlog -e -s
-le = log --pretty=fuller
+lw = shortlog --email --summary
 le = log --pretty=fuller
 li = !git l ..@{upstream}
-lid = !git l -p ..@{upstream}
+lid = !git l --patch ..@{upstream}
 lif = !git l --name-status ..@{upstream}
 lo = !git l @{upstream}..
-lod = !git l -p @{upstream}..
+lod = !git l --patch @{upstream}..
 lof = !git l --name-status @{upstream}..
 lch = cherry -v
 lchmod = !sh -c 'git l --summary | grep \"mode change\" -B 1|less'
 
 count = rev-list --count
 
-t = tag -l --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(refname:short)"
+t = tag --list --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(refname:short)"
 tr = ls-remote --tags origin
 ti = describe --tags
-td = tag -d
+td = tag --delete
 tda = "!f() { git tag -d $(git tag -l); }; f"
 tdr = push origin --delete
 tp = push --tags
 
 fn = "!git ls-files | grep -i"
-fc = grep -n -Ii --heading --break
-fcw = grep -n -Ii -w --heading --break
+fc = grep --line-number -I --ignore-case --heading --break
+fcw = grep --line-number -I --ignore-case --word-regexp --heading --break
 
 d = diff
 dc = diff --cached
 dw = diff --color-words=.
-dl = log -1 -p --no-merges
+dl = log -1 --patch --no-merges
 # show merge conflicts
 dmc = diff --check
 
