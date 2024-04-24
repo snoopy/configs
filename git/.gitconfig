@@ -118,10 +118,10 @@ cfgm = config user.email
 w = show
 
 adog = log --all --decorate --oneline --graph
-customlog = log --date-order --pretty=format:"%C(yellow)%H\\ %C(auto)%ad\\ %C(magenta)%<(10,trunc)%cr\\ %C(blue)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d"
-ln = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --no-merges
-l = !git customlog --date=format-local:'%Y-%m-%d %H:%M'
-lp = !git customlog --date=format-local:'%Y-%m-%d %H:%M' --topo-order
+customlog = log --date-order --pretty=format:"%C(yellow)%H\\ %C(auto)%cd\\ %C(magenta)%<(10,trunc)%cr\\ %C(blue)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d"
+ln = !git customlog --date=format:'%Y-%m-%d %H:%M' --no-merges
+l = !git customlog --date=format:'%Y-%m-%d %H:%M'
+lp = !git customlog --date=format:'%Y-%m-%d %H:%M' --topo-order
 lf = !git l --name-status --no-merges
 lfr = log --name-status --diff-filter=R --follow
 lfa = log --name-status --diff-filter=A --follow
