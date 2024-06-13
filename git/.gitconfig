@@ -162,6 +162,8 @@ tda = "!f() { git tag -d $(git tag -l); }; f"
 tdr = push origin --delete
 tp = push --tags
 
+ls = ls-files
+
 g = grep --line-number -I --ignore-case --heading --break
 gw = grep --line-number -I --ignore-case --heading --break --word-regexp
 gl = "!git ls-files --others | grep --ignore-case"
