@@ -166,7 +166,9 @@ tp = push --tags
 ls = ls-files
 
 g = grep --line-number -I --ignore-case --heading --break --untracked
+gr = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked $1 :/; }; f"
 gw = grep --line-number -I --ignore-case --heading --break --untracked --word-regexp
+grw = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked --word-regexp $1 :/; }; f"
 gl = "!git ls-files --cached --others | grep --ignore-case"
 glw = "!git ls-files --cached --others | grep --ignore-case --word-regexp"
 
