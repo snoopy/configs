@@ -154,8 +154,8 @@ lchmod = !sh -c 'git l --summary | grep \"mode change\" -B 1|less'
 
 count = rev-list --count
 
-t = tag
-lt = tag --list --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(refname:short)"
+ta = tag --annotate
+tl = tag --list --sort=-creatordate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(creatordate:short)\\ %(align:width=30,position=left)%(color:magenta)%(creatordate:relative)%(end)%(color:reset)%(align:width=10,position=left)%(objecttype)%(end)%(refname:short)"
 tr = ls-remote --tags origin
 ti = describe --tags
 td = tag --delete
