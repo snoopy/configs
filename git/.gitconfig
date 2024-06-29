@@ -36,9 +36,9 @@ git = !git
 s = status --short --branch
 si = status --short --branch --ignored
 
-cl = clone
-cla = clone --recurse-submodules
-cls = clone --depth 1
+cl = clone --no-tags
+cla = clone --recurse-submodules --no-tags
+cls = clone --depth 1 --no-tags
 
 co = checkout
 col = checkout -
