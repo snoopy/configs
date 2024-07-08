@@ -51,7 +51,7 @@ ap = add --patch
 
 scrub = clean -df
 # -x also removes files that are ignored
-purge = clean -dfx
+purge = clean -dfx -f
 
 rs = restore --staged
 rw = restore --worktree --patch
