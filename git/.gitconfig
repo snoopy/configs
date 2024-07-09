@@ -173,7 +173,7 @@ gl = "!git ls-files --cached --others | grep --ignore-case"
 glw = "!git ls-files --cached --others | grep --ignore-case --word-regexp"
 
 d = diff
-dc = diff --cached
+ds = diff --staged
 dw = diff --color-words=.
 dl = log -1 --patch --no-merges
 # show merge conflicts
