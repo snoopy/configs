@@ -142,7 +142,7 @@ lg = !git l -G
 ls = !git l -S
 # show who committed
 lw = shortlog --email --summary
-le = log --pretty=fuller
+lv = log --pretty=fuller
 li = !git l ..@{upstream}
 lid = !git l --patch ..@{upstream}
 lif = !git l --name-status ..@{upstream}
