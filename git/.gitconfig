@@ -35,13 +35,13 @@ git = !git
 
 s = status --short --branch
 si = status --short --branch --ignored
+sun = status --short --branch --untracked-files=no
 
 cl = clone --no-tags
 cla = clone --recurse-submodules --no-tags
 cls = clone --depth 1 --no-tags
 
 co = checkout
-col = checkout -
 
 a = add
 aa = add --all
@@ -61,17 +61,18 @@ drop = reset --hard HEAD~1
 pop = reset HEAD~1
 
 cp = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git cherry-pick"
+cpx = !git cp -x
 cpc = !git cp --continue
 cpa = !git cp --abort
 
 c = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git commit --date=$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
-cr = !git c --amend
-cm = !git c --message
-cs = !git c --amend --no-edit
-csa = !git c --all --amend -C HEAD
 ca = !git c --all
-cam = !git c --all --message
-cinit = !git c --allow-empty --message 'init'
+cr = !git c --amend
+cs = !git c --amend --no-edit
+csa = !git c --all --amend --no-edit
+cm = !git c --message
+cma = !git c --all --message
+cme = !git c --allow-empty --message
 
 p = push
 pf = push --force
@@ -84,18 +85,25 @@ m = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git merge"
 ff = pull --ff-only --no-tags
 ffu = pull --ff-only upstream HEAD
 ffm = !git m --ff-only
-ffb = "!f() { git fetch origin $1:$1; }; f"
+ffb = "!f() { git fetch --no-tags origin $1:$1; }; f"
 
-b = branch --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(if)%(HEAD)%(then)%(color:green)%(HEAD)%(end)%(refname:short)%(if)%(upstream)%(then)\\ %(color:blue)[%(upstream:short)]%(color:red)%(upstream:track)%(end)"
-br = !git b --remotes
+bl = branch --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(if)%(HEAD)%(then)%(color:green)%(HEAD)%(end)%(refname:short)%(if)%(upstream)%(then)\\ %(color:blue)[%(upstream:short)]%(color:red)%(upstream:track)%(end)"
+br = !git bl --remotes
 buu = branch --unset-upstream
 bsu = branch --set-upstream-to
 bm = branch --move
 bd = branch --delete --force
 bdr = push origin --delete
-bc = switch --create
-be = branch --merged
-bf = branch --contains
+bn = switch --create
+b = switch
+bb = switch -
+
+d = diff
+ds = diff --staged
+dw = diff --color-words=.
+dl = log -1 --patch --no-merges
+# show merge conflicts
+dmc = diff --check
 
 rbi = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git rebase -i"
 rbc = rebase --continue
@@ -110,49 +118,57 @@ rmtu = remote set-url
 rmtap = remote set-url --add --push #<remote> <url>
 
 sma = submodule add
-smu = submodule update --remote --merge
-smi = submodule update --init
+smu = submodule update --recursive --remote --merge
+smi = submodule update --init --recursive
 
 cfgu = config user.name
 cfgm = config user.email
 
-w = show
-
-adog = log --all --decorate --oneline --graph
-customlog = log --date-order --pretty=format:"%C(yellow)%H\\ %C(auto)%cd\\ %C(magenta)%<(10,trunc)%cr\\ %C(blue)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d"
-ln = !git customlog --date=format:'%Y-%m-%d %H:%M' --no-merges
-l = !git customlog --date=format:'%Y-%m-%d %H:%M'
-lp = !git customlog --date=format:'%Y-%m-%d %H:%M' --topo-order
+customlog = log --date-order --pretty=format:"%C(yellow)%H\\ %C(reset)%s\\ %C(auto)%d\\ %n%C(auto)a:\\ %C(magenta)%<(20,trunc)%ar\\ %C(reset)%ad\\ %C(blue)%<(20,trunc)%an\\ %C(reset)%ae\\ %n%C(auto)c:\\ %C(magenta)%<(20,trunc)%cr\\ %C(reset)%cd\\ %C(blue)%<(20,trunc)%cn\\ %C(reset)%ce\\ %n%n%C(reset)%b" --date=format:'%Y-%m-%d %H:%M %z'
+l = !git customlog
+ll = !git l -1 --name-status
+ld = !git l --patch --no-merges
 lf = !git l --name-status --no-merges
+lr = log --walk-reflogs --pretty=oneline
+# show who committed
+lw = shortlog --email --summary
+
 lfr = log --name-status --diff-filter=R --follow
 lfa = log --name-status --diff-filter=A --follow
 lfd = log --name-status --diff-filter=D --follow
 lfra = !git l --name-status --diff-filter=R
 lfaa = !git l --name-status --diff-filter=A
 lfda = !git l --name-status --diff-filter=D
-ld = !git l --patch --no-merges
-ll = log -1 --name-status --pretty=fuller
-lr = log --walk-reflogs --pretty=oneline
+
 # show commits by message
 lm = !git l --regexp-ignore-case --grep
+lmd = !git l --patch --no-merges --regexp-ignore-case --grep
+lmf = !git l --name-status --no-merges --regexp-ignore-case --grep
+
 # show commits by author
 la = !git l --regexp-ignore-case --author
+lad = !git l --patch --no-merges --regexp-ignore-case --author
+laf = !git l --name-status --no-merges --regexp-ignore-case --author
+
 # show commits where diff matches regex (shows moves unlike -S)
 lg = !git l -G
-ls = !git l -S
-# show who committed
-lw = shortlog --email --summary
-lv = log --pretty=fuller
+lgf = !git l --name-status -G
+lgf = !git l --patch -G
+
+# log inbound commits
 li = !git l ..@{upstream}
 lid = !git l --patch ..@{upstream}
 lif = !git l --name-status ..@{upstream}
+
+# log outbound changes
 lo = !git l @{upstream}..
 lod = !git l --patch @{upstream}..
 lof = !git l --name-status @{upstream}..
-lch = cherry -v
-lchmod = !sh -c 'git l --summary | grep \"mode change\" -B 1|less'
 
-count = rev-list --count
+lol = log --date-order --pretty=format:"%C(yellow)%H\\ %C(auto)%cd\\ %C(magenta)%<(10,trunc)%cr\\ %C(blue)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d" --date=format:'%Y-%m-%d %H:%M'
+lnm = !git l --no-merges
+lto = !git l --topo-order
+lchmod = !sh -c 'git l --summary | grep \"mode change\" -B 1|less'
 
 ta = tag --annotate
 tl = tag --list --sort=-creatordate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(creatordate:short)\\ %(align:width=30,position=left)%(color:magenta)%(creatordate:relative)%(end)%(color:reset)%(align:width=10,position=left)%(objecttype)%(end)%(refname:short)"
@@ -163,21 +179,10 @@ tda = "!f() { git tag -d $(git tag -l); }; f"
 tdr = push origin --delete
 tp = push --tags
 
-ls = ls-files
-
-g = grep --line-number -I --ignore-case --heading --break --untracked
-gr = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked $1 :/; }; f"
-gw = grep --line-number -I --ignore-case --heading --break --untracked --word-regexp
-grw = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked --word-regexp $1 :/; }; f"
-gl = "!git ls-files --cached --others | grep --ignore-case"
-glw = "!git ls-files --cached --others | grep --ignore-case --word-regexp"
-
-d = diff
-ds = diff --staged
-dw = diff --color-words=.
-dl = log -1 --patch --no-merges
-# show merge conflicts
-dmc = diff --check
+g = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked $1 :/; }; f"
+gw = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked --word-regexp $1 :/; }; f"
+gf = "!git ls-files --cached --others | grep --ignore-case"
+gfw = "!git ls-files --cached --others | grep --ignore-case --word-regexp"
 
 sl = stash list
 ss = stash push
@@ -185,3 +190,11 @@ sp = stash pop
 sa = stash apply
 sd = stash drop
 sc = stash clear
+
+adog = log --all --decorate --oneline --graph
+count = rev-list --count
+w = show
+# list branches that are merged into current (or given) branch
+merged = branch --merged
+# list branches that contain given commit
+contains = branch --contains
