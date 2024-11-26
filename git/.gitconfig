@@ -151,9 +151,9 @@ lad = !git l --patch --no-merges --regexp-ignore-case --author
 laf = !git l --name-status --no-merges --regexp-ignore-case --author
 
 # show commits where diff matches regex (shows moves unlike -S)
-lg = !git l -G
-lgf = !git l --name-status -G
-lgf = !git l --patch -G
+lg = !git l --regexp-ignore-case -G
+lgf = !git l --name-status --regexp-ignore-case -G
+lgd = !git l --patch --regexp-ignore-case -G
 
 # log inbound commits
 li = !git l ..@{upstream}
