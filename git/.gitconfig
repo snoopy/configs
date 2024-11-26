@@ -127,6 +127,7 @@ cfgm = config user.email
 customlog = log --date-order --pretty=format:"%C(yellow)%H\\ %C(reset)%s\\ %C(auto)%d\\ %n%C(auto)a:\\ %C(magenta)%<(20,trunc)%ar\\ %C(reset)%ad\\ %C(blue)%<(20,trunc)%an\\ %C(reset)%ae\\ %n%C(auto)c:\\ %C(magenta)%<(20,trunc)%cr\\ %C(reset)%cd\\ %C(blue)%<(20,trunc)%cn\\ %C(reset)%ce\\ %n%n%C(reset)%b" --date=format:'%Y-%m-%d %H:%M %z'
 l = !git customlog
 ll = !git l -1 --name-status
+lc = !git l -1 --patch
 ld = !git l --patch --no-merges
 lf = !git l --name-status --no-merges
 lr = log --walk-reflogs --pretty=oneline
@@ -193,7 +194,6 @@ sc = stash clear
 
 adog = log --all --decorate --oneline --graph
 count = rev-list --count
-w = show
 # list branches that are merged into current (or given) branch
 merged = branch --merged
 # list branches that contain given commit
