@@ -101,7 +101,6 @@ bb = switch -
 d = diff
 ds = diff --staged
 dw = diff --color-words=.
-dl = log -1 --patch --no-merges
 # show merge conflicts
 dmc = diff --check
 
