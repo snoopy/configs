@@ -37,9 +37,9 @@ s = status --short --branch
 si = status --short --branch --ignored
 sun = status --short --branch --untracked-files=no
 
-cl = clone --no-tags
-cla = clone --recurse-submodules --no-tags
-cls = clone --depth 1 --no-tags
+dl = clone --no-tags
+dlr = clone --no-tags --recurse-submodules
+dls = clone --no-tags --depth 1
 
 co = checkout
 
