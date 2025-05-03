@@ -198,6 +198,7 @@ sp = stash pop
 sa = stash apply
 sd = stash drop
 sc = stash clear
+sh = stash show -p
 
 adog = log --all --decorate --oneline --graph
 count = rev-list --count
