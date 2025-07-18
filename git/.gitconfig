@@ -187,10 +187,10 @@ tda = "!f() { git tag -d $(git tag -l); }; f"
 tdr = push origin --delete
 tp = push --tags
 
-g = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked \"$1\" -- \"*.${2:-*}\"; }; f"
-gw = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked --word-regexp \"$1\" -- \"*.${2:-*}\"; }; f"
-gn = "!f() { git ls-files --cached --others | grep --ignore-case \"$1\" | grep \".${2:-*}$\"; }; f"
-gnw = "!f() { git ls-files --cached --others | grep --ignore-case --word-regexp \"$1\" | grep \".${2:-*}$\"; }; f"
+g = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked \"$1\" ${2:+-- *.$2}; }; f"
+gw = "!f() { git grep --line-number -I --ignore-case --heading --break --untracked --word-regexp \"$1\" ${2:+-- *.$2}; }; f"
+gn = "!f() { git ls-files --cached --others | grep --ignore-case \"$1\" | grep ${2:+.$2}$; }; f"
+gnw = "!f() { git ls-files --cached --others | grep --ignore-case --word-regexp \"$1\" | grep ${2:+.$2}$; }; f"
 
 sl = stash list
 ss = stash push
