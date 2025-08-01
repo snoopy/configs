@@ -61,18 +61,18 @@ drop = reset --hard HEAD~1
 pop = reset HEAD~1
 
 cp = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git cherry-pick"
-cpx = !git cp -x
-cpc = !git cp --continue
-cpa = !git cp --abort
+cpx = cp -x
+cpc = cp --continue
+cpa = cp --abort
 
 c = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git commit --date=$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
-ca = !git c --all
-cr = !git c --amend
-cs = !git c --amend --no-edit
-csa = !git c --all --amend --no-edit
-cm = !git c --message
-cma = !git c --all --message
-cme = !git c --allow-empty --message
+ca = c --all
+cr = c --amend
+cs = c --amend --no-edit
+csa = c --all --amend --no-edit
+cm = c --message
+cma = c --all --message
+cme = c --allow-empty --message
 
 p = push
 pf = push --force
@@ -84,11 +84,11 @@ fat = "!f() { git fetch --all --tags --prune && git s; }; f"
 m = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git merge"
 ff = pull --ff-only --no-tags
 ffu = pull --ff-only upstream HEAD
-ffm = !git m --ff-only
+ffm = m --ff-only
 ffb = "!f() { git fetch --no-tags origin $1:$1; }; f"
 
 bl = branch --sort=-committerdate --format="%(color:yellow)%(objectname)\\ %(color:reset)%(committerdate:short)\\ %(align:width=30,position=left)%(color:magenta)%(committerdate:relative)%(end)%(color:reset)%(if)%(HEAD)%(then)%(color:green)%(HEAD)%(end)%(refname:short)%(if)%(upstream)%(then)\\ %(color:blue)[%(upstream:short)]%(color:red)%(upstream:track)%(end)"
-br = !git bl --remotes
+br = bl --remotes
 buu = branch --unset-upstream
 bsu = branch --set-upstream-to
 bm = branch --move
@@ -126,56 +126,56 @@ cfgm = config user.email
 customlog = log --date-order --pretty=format:"%C(yellow)%H\\ %C(reset)%s\\ %C(auto)%d\\ %n%C(auto)a:\\ %C(magenta)%<(20,trunc)%ar\\ %C(reset)%ad\\ %C(blue)%<(20,trunc)%an\\ %C(reset)%ae\\ %n%C(auto)c:\\ %C(magenta)%<(20,trunc)%cr\\ %C(reset)%cd\\ %C(blue)%<(20,trunc)%cn\\ %C(reset)%ce%n" --date=format:'%Y-%m-%d %H:%M %z'
 customloglong = log --date-order --pretty=format:"%C(yellow)%H\\ %C(reset)%s\\ %C(auto)%d\\ %n%C(auto)a:\\ %C(magenta)%<(20,trunc)%ar\\ %C(reset)%ad\\ %C(blue)%<(20,trunc)%an\\ %C(reset)%ae\\ %n%C(auto)c:\\ %C(magenta)%<(20,trunc)%cr\\ %C(reset)%cd\\ %C(blue)%<(20,trunc)%cn\\ %C(reset)%ce\\ %n%n%C(reset)%b" --date=format:'%Y-%m-%d %H:%M %z'
 
-l = !git customlog
-ll = !git customloglong
-ld = !git ll --patch --no-merges
-lf = !git l --name-status --no-merges
+l = customlog
+ll = customloglong
+ld = ll --patch --no-merges
+lf = l --name-status --no-merges
 
-l1 = !git l -1
-ll1 = !git ll -1
-ld1 = !git ll --patch --no-merges -1
-lf1 = !git l --name-status --no-merges -1
+l1 = l -1
+ll1 = ll -1
+ld1 = ld -1
+lf1 = lf -1
 
 lr = log --walk-reflogs --pretty=oneline
 
 # show who committed
 lw = shortlog --email --summary
 
-lfr = log --name-status --diff-filter=R --follow
-lfa = log --name-status --diff-filter=A --follow
-lfd = log --name-status --diff-filter=D --follow
-lfra = !git l --name-status --diff-filter=R
-lfaa = !git l --name-status --diff-filter=A
-lfda = !git l --name-status --diff-filter=D
+lfr = l --name-status --diff-filter=R --follow
+lfa = l --name-status --diff-filter=A --follow
+lfd = l --name-status --diff-filter=D --follow
+lfra = l --name-status --diff-filter=R
+lfaa = l --name-status --diff-filter=A
+lfda = l --name-status --diff-filter=D
 
 # show commits by message
-lm = !git l --regexp-ignore-case --grep
-lmd = !git l --patch --no-merges --regexp-ignore-case --grep
-lmf = !git l --name-status --no-merges --regexp-ignore-case --grep
+lm = l --regexp-ignore-case --grep
+lmd = ld --regexp-ignore-case --grep
+lmf = lf --regexp-ignore-case --grep
 
 # show commits by author
-la = !git l --regexp-ignore-case --author
-lad = !git l --patch --no-merges --regexp-ignore-case --author
-laf = !git l --name-status --no-merges --regexp-ignore-case --author
+la = l --regexp-ignore-case --author
+lad = ld --regexp-ignore-case --author
+laf = lf --regexp-ignore-case --author
 
 # show commits where diff matches regex (shows moves unlike -S)
-lg = !git l --regexp-ignore-case -G
-lgf = !git l --name-status --regexp-ignore-case -G
-lgd = !git l --patch --regexp-ignore-case -G
+lg = l --regexp-ignore-case -G
+lgf = l --name-status --regexp-ignore-case -G
+lgd = l --patch --regexp-ignore-case -G
 
 # log inbound commits
-li = !git l ..@{upstream}
-lid = !git l --patch ..@{upstream}
-lif = !git l --name-status ..@{upstream}
+li = l ..@{upstream}
+lid = l --patch ..@{upstream}
+lif = l --name-status ..@{upstream}
 
 # log outbound changes
-lo = !git l @{upstream}..
-lod = !git l --patch @{upstream}..
-lof = !git l --name-status @{upstream}..
+lo = l @{upstream}..
+lod = l --patch @{upstream}..
+lof = l --name-status @{upstream}..
 
 lol = log --date-order --pretty=format:"%C(yellow)%H\\ %C(auto)%cd\\ %C(magenta)%<(10,trunc)%cr\\ %C(blue)%<(15,trunc)%an\\ %C(reset)%s\\ %C(auto)%d" --date=format:'%Y-%m-%d %H:%M'
-lnm = !git l --no-merges
-lto = !git l --topo-order
+lnm = l --no-merges
+lto = l --topo-order
 lchmod = !sh -c 'git l --summary | grep \"mode change\" -B 1|less'
 
 ta = tag --annotate
