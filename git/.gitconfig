@@ -136,6 +136,8 @@ ll1 = ll -1
 ld1 = ld -1
 lf1 = lf -1
 
+l0 = ld1 --max-parents=0 HEAD
+
 lr = log --walk-reflogs --pretty=oneline
 
 # show who committed
