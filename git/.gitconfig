@@ -141,7 +141,7 @@ l0 = ld1 --max-parents=0 HEAD
 lr = log --walk-reflogs --pretty=oneline
 
 # show who committed
-lw = shortlog --email --summary
+lw = shortlog --email --summary --group=author --group=committer
 
 lfr = l --name-status --diff-filter=R --follow
 lfa = l --name-status --diff-filter=A --follow
