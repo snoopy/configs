@@ -104,9 +104,10 @@ dw = diff --color-words=.
 # show merge conflicts
 dmc = diff --check
 
-rbi = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git rebase -i"
-rbc = rebase --continue
-rbs = rebase --skip
+rb = "!GIT_COMMITTER_DATE=$(date --utc +%Y-%m-%dT%H:%M:%S%z) git rebase"
+rbi = rb -i
+rbc = rb --continue
+rbs = rb --skip
 rba = rebase --abort
 rbn = "!f() { git rbi HEAD~$1; }; f"
 
